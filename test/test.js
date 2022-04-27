@@ -19,4 +19,11 @@ describe("Greeter", function () {
   it("Should return the greeting", async function () {
     await expect(this.deploedGreeter.setGreeting("no")).to.be.revertedWith("Greeter: 10 minutes has not been passed")
   });
+
+  it("Should return the greeting", async function () {
+    await network.provider.send("evm_increaseTime", [600]);
+    await this.deploedGreeter.setGreeting("no");
+    let greet=await this.deploedGreeter.greet();
+    expect(greet).to.equal("no");
+  });
 });
