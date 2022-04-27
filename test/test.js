@@ -11,8 +11,12 @@ describe("Greeter", function () {
     this.deploedGreeter = await Greeter.deploy("Hello, world!");
     await this.deploedGreeter.deployed();
   })
-  it("Should return the new greeting once it's changed", async function () {
+  it("Should return the greeting", async function () {
     let greet=await this.deploedGreeter.greet();
     expect(greet).to.equal("Hello, world!");
+  });
+
+  it("Should return the greeting", async function () {
+    await expect(this.deploedGreeter.setGreeting("no")).to.be.revertedWith("Greeter: 10 minutes has not been passed")
   });
 });
