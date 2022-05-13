@@ -14,12 +14,27 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  // const Orecle = await hre.ethers.getContractFactory("Oracle");
+  // const oracle = await Orecle.deploy("0x9117aB998665086df16367aF10094fF47f9894c0");
 
-  await greeter.deployed();
+  // await oracle.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+  // console.log("oracle deployed to:", oracle.address);
+
+  const UniswapV3Factory="0x1F98431c8aD98523631AE4a59f267346ea31F984";
+  const WETH9="0xc778417E063141139Fce010982780140Aa0cD5Ab";
+  const DAI="0xaD6D458402F60fD3Bd25163575031ACDce07538D";
+  const FEE=3000;
+
+  const UniswapV3Oracle = await hre.ethers.getContractFactory("UniswapV3Oracle");
+  const uniswapV3oracle = await UniswapV3Oracle.deploy(UniswapV3Factory,WETH9,DAI,FEE);
+
+  await uniswapV3oracle.deployed();
+
+  console.log("uniswapV3oracle deployed to:", uniswapV3oracle.address);
+
+
+ 
 }
 
 // We recommend this pattern to be able to use async/await everywhere
