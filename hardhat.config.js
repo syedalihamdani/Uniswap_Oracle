@@ -35,6 +35,8 @@ module.exports = {
       chainId: 4,
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        // gasPrice:25000000000000,
+        // gas:500000
     }
   },
   gasReporter: {

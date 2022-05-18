@@ -22,12 +22,12 @@ async function main() {
   // console.log("oracle deployed to:", oracle.address);
 
   const UniswapV3Factory="0x1F98431c8aD98523631AE4a59f267346ea31F984";
-  const WETH9="0xc778417E063141139Fce010982780140Aa0cD5Ab";
-  const DAI="0xaD6D458402F60fD3Bd25163575031ACDce07538D";
-  const FEE=3000;
+  // const WETH9="0xc778417E063141139Fce010982780140Aa0cD5Ab";
+  // const USDT="0x3B00Ef435fA4FcFF5C209a37d1f3dcff37c705aD";
+  // const FEE=3000;
 
   const UniswapV3Oracle = await hre.ethers.getContractFactory("UniswapV3Oracle");
-  const uniswapV3oracle = await UniswapV3Oracle.deploy(UniswapV3Factory,WETH9,DAI,FEE);
+  const uniswapV3oracle = await UniswapV3Oracle.deploy(UniswapV3Factory);
 
   await uniswapV3oracle.deployed();
 
